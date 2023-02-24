@@ -1,10 +1,9 @@
 import React from "react";
-import { withStorageListener } from "./withStorageListener";
+import { useStorageListener } from "./useStorageListener";
 
-function ChangeAlert({ show, toggleShow }) {
+function ChangeAlert({ sincronize }) {
+  const { show, toggleShow } = useStorageListener(sincronize);
   if (show) {
-    // toggleShow(false);
-    // return <p>synchronizing</p>;
     return (
       <div>
         <p>Hubo cambios en otras ventanas!!!</p>
@@ -17,6 +16,4 @@ function ChangeAlert({ show, toggleShow }) {
   return <p>Sincronized!!!</p>;
 }
 
-const ChangeAlertWithStorageListener = withStorageListener(ChangeAlert);
-
-export { ChangeAlertWithStorageListener };
+export { ChangeAlert };
